@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; URL=/" />
+    <script>
+      // Redirect using JavaScript if the meta refresh fails
+      var redirectTo = window.location.pathname.replace('/repository-name', '');
+      window.location.href = '/' + 'repository-name' + '#' + redirectTo;
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
