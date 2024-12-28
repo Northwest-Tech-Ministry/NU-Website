@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <meta http-equiv="refresh" content="0; URL=/" />
     <script>
-      // Redirect using JavaScript if the meta refresh fails
-      var redirectTo = window.location.pathname.replace('/repository-name', '');
-      window.location.href = '/' + 'repository-name' + '#' + redirectTo;
+      // JavaScript fallback for redirection
+      var redirectTo = window.location.pathname;
+      window.location.href = '/' + '#' + redirectTo;
     </script>
+    <title>Redirecting...</title>
   </head>
   <body>
     Redirecting...
