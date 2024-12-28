@@ -2,13 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; URL=/" />
-    <script>
-      // JavaScript fallback for redirection
-      var redirectTo = window.location.pathname;
-      window.location.href = '/' + '#' + redirectTo;
-    </script>
     <title>Redirecting...</title>
+    <script>
+      // Redirect to the root with the original path preserved
+      var redirectTo = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace('/?' + 'redirect=' + encodeURIComponent(redirectTo));
+    </script>
   </head>
   <body>
     Redirecting...
