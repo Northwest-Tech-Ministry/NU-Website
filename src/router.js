@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import News from './pages/News.vue';
 import Overview from './pages/Overview.vue';
 import General from './pages/General.vue';
@@ -26,7 +26,7 @@ const routes = [
 ];
 
 const router = createRouter({
-   history: createWebHistory('/'),
+   history: createWebHashHistory('/'),
   routes,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
