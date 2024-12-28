@@ -1,16 +1,24 @@
-name: Build Vue
-on: [push]
+name: Build Vue App
+
+on:
+  push:
+    branches: [ gh-pages ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
 jobs:
-  build_vue:
-    permissions:
-      contents: write
+  build_react:
     runs-on: ubuntu-latest
     name: Build Vue
     steps:
     - uses: actions/checkout@v2
-    - id: Build-Vue
+    - id: Build-Vue-App
       uses: BitDEVil2K16/VuePagesAction@1.0.0
       with:
         username: 'Northwest-Tech-Ministry'
         reponame: 'NU-Website'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+        # cname: 'example.com'
