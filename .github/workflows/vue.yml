@@ -2,7 +2,7 @@ name: Build Vue App
 
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
