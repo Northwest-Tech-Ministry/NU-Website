@@ -13,8 +13,7 @@
 
 <div class="prereq">
 <p>Before writing code, you should read "Chapter 8:
-  File system" from the <a href="../xv6/book-riscv-rev4.pdf">xv6
-  book</a> and study the corresponding code.
+  File system" from the <router-link to="/xv6-book">xv6 Book</router-link> and study the corresponding code.
 </div>
 
 <p>Fetch the xv6 source for the lab and check out the <tt>util</tt> branch:

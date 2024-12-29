@@ -1,16 +1,18 @@
 <template>
   <div class="container">
 
-    <h1>Lab: Xv6 and Unix utilities</h1>
+    <h1>Lab: Xv6 and Unix utilities [<a href="https://discovery.northwestu.edu/mod/assign/view.php?id=430979">GitHub Classroom Link</a>]</h1>
 
     <p>
-      In this lab, you will implement some simple Unix utilities in xv6.
-      The lab is divided into five tasks: <router-link to="/labs/util#boot-xv6">boot xv6</router-link>,
-      <router-link to="/labs/util#sleep">sleep</router-link>,
-      <router-link to="/labs/util#pingpong">pingpong</router-link>,
-      <router-link to="/labs/util#primes">primes</router-link>, and
-      <router-link to="/labs/util#find">find</router-link>.
-      </p>
+      In this lab, you will implement some simple Unix utilities in xv6.</p>
+      <ul>
+        <li><router-link to="#boot-xv6">boot xv6</router-link></li>
+        <li><router-link to="#sleep">sleep</router-link></li>
+        <li><router-link to="#pingpong">pingpong</router-link></li>
+        <li><router-link to="#primes">primes</router-link></li>
+        <li><router-link to="#find">find</router-link></li>
+      </ul>
+
     <p>This lab will familiarize you with xv6 and its system calls.
       Have a look at the <router-link to="/tools">lab tools page</router-link> for information
       about how to set up your computer to run these labs.
@@ -289,7 +291,7 @@ console        3 20 0
     $
   </pre>
 
-  <h2 id="find">find (<span class="moderate">moderate</span>)
+    <h2 id="find">find (<span class="moderate">moderate</span>)
     </h2>
 
     <div class="required">
@@ -335,6 +337,8 @@ console        3 20 0
     <h2>Submit the lab</h2>
 
     <p>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.</p>
+
+    <p>You should submit using GitHub Desktop and then check the website to ensure all the code was pushed.</p>
   </div>
 </template>
 

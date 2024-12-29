@@ -24,8 +24,7 @@ protocol processing stack.
 
 <div class="prereq">
 <p>Before writing code, you may find it helpful to review "Chapter 5: Interrupts and
-device drivers" in the <a
-href="../xv6/book-riscv-rev4.pdf">xv6 book</a>.
+device drivers" in the <router-link to="/xv6-book">xv6 Book</router-link>.
 </div>
    
 <p>You'll use a network device called the E1000 to handle network

@@ -18,7 +18,7 @@ block cache.
 <div class="prereq">
 
   <p>Before writing code, make sure to read the following
-    parts from  the <a href="../xv6/book-riscv-rev4.pdf">xv6 book</a> :
+    parts from  the <router-link to="/xv6-book">xv6 Book</router-link> :
     <ul>
 
     <li> Chapter 6: "Locking" and the corresponding code.

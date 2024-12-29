@@ -1,52 +1,47 @@
-<html>
-<head>
-<title>Lab: page tables</title>
-<link rel="stylesheet" href="labs.css" type="text/css" />
-<script src="guidance.js"></script>
-</head>
-<body>
+<template>
+  <div class="container">
 
-<h1>Lab: page tables</h1>
+<h1>Lab: Page Tables [<a href="">GitHub Classroom Link</a>]</h1>
 
 <p> In this lab you will explore page tables and modify them to
-  implement common OS features.
+  implement common OS features.</p>
 
 <div class="prereq">
 <p>Before you start coding, read Chapter 3 of
-  the <a href="../xv6/book-riscv-rev4.pdf">xv6 book</a>, and related files:
+  the <router-link to="/xv6-book">xv6 Book</router-link>, and related files:</p>
 
   <ul>
-   <li> <tt>kernel/memlayout.h</tt>, which captures the layout of memory.
+   <li> <tt>kernel/memlayout.h</tt>, which captures the layout of memory.</li>
 	  
-    <li> <tt>kernel/vm.c</tt>, which contains most virtual memory (VM) code.
+    <li> <tt>kernel/vm.c</tt>, which contains most virtual memory (VM) code.</li>
 
     <li> <tt>kernel/kalloc.c</tt>, which contains code for allocating and
-    freeing physical memory.
+    freeing physical memory.</li>
   
   </ul>
   
-It may also help to consult the <a href="https://drive.google.com/file/d/17GeetSnT5wW3xNuAHI95-SI1gPGd5sJ_/view?usp=drive_link">RISC-V privileged architecture manual</a>.
+It may also help to consult the <a href="readings/priv-isa-asciidoc.pdf">RISC-V privileged architecture manual</a>.
 
 </div>
 
-<p>To start the lab, switch to the pgtbl branch:
-  <pre>
-  $ <kbd>git fetch</kbd>
-  $ <kbd>git checkout pgtbl</kbd>
-  $ <kbd>make clean</kbd>
-  </pre>
+<p>The lab is divided into 3 tasks:</p>
+ <ul>
+      <li><router-link to="#inspect">Inspect a user-process page table</router-link></li>
+      <li><router-link to="#speed">Speed up system calls</router-link></li>
+      <li><router-link to="#print">Print a page table</router-link></li>
+ </ul>
 
-<h2>Inspect a user-process page table <script>g("easy")</script></h2>
+  <h2 id="inspect">Inspect a user-process page table (<span class="easy">easy</span>)</h2>
 
 <p>
 To help you understand RISC-V page tables, your first task is to explain
-the page table for a user process.
+the page table for a user process.</p>
 
 <p>Run <tt>make qemu</tt> and run the user program <tt>pgtbltest</tt>.
 The <tt>print_pgtbl</tt> functions prints out the page-table entries
 for the first 10 and last 10 pages of the <tt>pgtbltest</tt> process
 using the <tt>pgpte</tt> system call that we added to xv6 for this
-lab. The output looks as follows:
+lab. The output looks as follows:</p>
   <pre>
 va 0 pte 0x21FCF45B pa 0x87F3D000 perm 0x5B
 va 1000 pte 0x21FCE85B pa 0x87F3A000 perm 0x5B
@@ -65,14 +60,14 @@ inspected here.  Note that xv6 doesn't place the virtual pages
 consecutively in physical memory.
 </div>
 
-<h2>Speed up system calls <script>g("easy")</script></h2>
+<h2 id="speed">Speed up system calls (<span class="easy">easy</span>)</h2>
 
 <p>
 Some operating systems (e.g., Linux) speed up certain system calls by sharing
 data in a read-only region between userspace and the kernel. This eliminates the
 need for kernel crossings when performing these system calls.  To help you learn
 how to insert mappings into a page table, your first task is to implement this
-optimization for the <tt>getpid()</tt> system call in xv6.
+optimization for the <tt>getpid()</tt> system call in xv6.</p>
 
 <div class="required">
 When each process is created, map one read-only page at USYSCALL (a
@@ -85,11 +80,11 @@ You will receive full credit for this part of the lab if the <tt>ugetpid</tt> te
 case passes when running <tt>pgtbltest</tt>.
 </div>
 
-<p>Some hints:
+<p>Some hints:</p>
 <ul>
-  <li>Choose permission bits that allow userspace to only read the page.
+  <li>Choose permission bits that allow userspace to only read the page.</li>
   <li>There are a few things that need to be done over the lifecycle of a new page.
-      For inspiration, understand the trapframe handling in <tt>kernel/proc.c</tt>.
+      For inspiration, understand the trapframe handling in <tt>kernel/proc.c</tt>.</li>
 </ul>
  
 <div class="question">
@@ -97,12 +92,12 @@ Which other xv6 system call(s) could be made faster using this shared page?
 Explain how.
 </div>
 
-<h2>Print a page table <script>g("easy")</script></h2>
+<h2 id="print">Print a page table (<span class="easy">easy</span>)</h2>
 
 <p>
 To help you visualize RISC-V page tables, and perhaps
 to aid future debugging, your next task is to write a function
-that prints the contents of a page table.
+that prints the contents of a page table.</p>
 
 <div class="required">
   We added a system call <tt>kpgtbl()</tt>, which calls
@@ -113,7 +108,7 @@ in the format described below.
 
 <p>
   When you run <tt>print_kpgtbl()</tt> test, your implementation
-  should print the following output:
+  should print the following output:</p>
 
   <pre>
 page table 0x0000000087f22000
@@ -147,10 +142,10 @@ Your code might emit different physical addresses than those shown above.
 The number of entries and the virtual addresses should be the same.
 </p>
 
-<p>Some hints:
+<p>Some hints:</p>
 <ul>
-  <li>Use the macros at the end of the file kernel/riscv.h.
-  <li>The function <tt>freewalk</tt> may be inspirational.
+  <li>Use the macros at the end of the file kernel/riscv.h.</li>
+  <li>The function <tt>freewalk</tt> may be inspirational.</li>
   <li>Use <tt>%p</tt> in your printf calls to print out full 64-bit hex PTEs and addresses as shown in the example.</li>
 </ul>
 
@@ -162,131 +157,23 @@ Figure 3.4 in the xv6 book might be helpful, although note that the figure might
 have a slightly different set of pages than the process that's being inspected here.
 </div>
 
-<h2>Use superpages <script>g("moderate")</script>/<script>g("hard")</script></h2>
-  
-The RISC-V paging hardware supports two-megabyte pages as well as
-ordinary 4096-byte pages. The general idea of larger pages is called
-superpages, and (since RISC-V supports more than one size) 2M pages
-are called megapages. The operating system creates a superpage by
-setting the PTE_V and PTE_R bits in the level-1 PTE, and setting the
-physical page number to point to the start of a two-megabyte region of
-physical memory. This physical address must be two-mega-byte aligned
-(i.e., a multiple of two megabytes). You can read about this in the
-RISC-V privileged manual by searching for megapage and superpage; in
-particular, the top of page 112.
-
-Use of superpages decreases the amount of physical memory used by the
-page table, and can decrease misses in the TLB cache. For some
-programs this leads to large increases in performance.
-
-<div class="required">
-Your job is to modify the xv6 kernel to use superpages. In particular,
-if a user program calls sbrk() with a size of 2 megabytes or more, and
-the newly created address range includes one or more areas that are
-two-megabyte-aligned and at least two megabytes in size, the kernel
-should use a single superpage (instead of hundreds of ordinary pages).
-You will receive full credit for this part of the lab if
-the <tt>superpg_test</tt> test case passes when
-running <tt>pgtbltest</tt>.
-</div>
-
-<p>Some hints:
-  <ul>
-    <li> Read <tt>superpg_test</tt> in <tt>user/pgtbltest.c</tt>.
-    <li> A good place to start is <tt>sys_sbrk</tt>
-      in <tt>kernel/sysproc.c</tt>, which is invoked by
-      the <tt>sbrk</tt> system call.  Follow the code path to the
-      function that allocates memory for <tt>sbrk</tt>.
-    <li> Your kernel will need to be able to allocate and free two-megabyte
-regions. Modify kalloc.c to set aside a few two-megabyte areas of
-physical memory, and create superalloc() and superfree() functions.
-You'll only need a handful of two-megabyte chunks of memory.
-    <li>
-Superpages must be allocated when a process with superpages forks,
-and freed when it exits; you'll need to modify
-<tt>uvmcopy()</tt> and <tt>uvmunmap()</tt>.
-  </ul>
-
-<p>Real operating systems dynamically promote a collection of pages to
-a superpage.  The following reference explains why that is a good idea
-and what is hard in a more serious design: <a href="https://www.usenix.org/conference/osdi-02/practical-transparent-operating-system-support-superpages">Juan Navarro, Sitaram Iyer,
-Peter Druschel, and Alan Cox. Practical, transparent operating system
-support for superpages. SIGOPS Oper.  Syst. Rev., 36(SI):89-104,
-December 2002.</a>  This reference summarizes
-  superpage-implementations
-  for different OSes:
-  <a href="https://www.usenix.org/conference/atc20/presentation/zhu-weixi">A
-	   comprehensive analysis of superpage management mechanism
-	   and policies</a>.
-  
-<p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<h3>Time spent</h3>
+<p>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.</p>
 
-<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
-number of hours you spent on the lab.
-<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
-
-<h3>Answers</h3>
-
-<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
-<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
-
-<h3>Submit</h3>
-
-<p>Assignment submissions are handled by Gradescope.
-You will need an MIT gradescope account.
-See Piazza for the entry code to join the class.
-Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
-if you need more help joining.
-
-<p>When you're ready to submit, run <kbd>make zipball</kbd>,
-which will generate <tt>lab.zip</tt>.
-Upload this zip file to the corresponding Gradescope assignment.
-
-<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
-You can cause <tt>git</tt> to track a new file that you create using
-<kbd>git add {filename}</kbd>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
-    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
-  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
-  <li>You can inspect the status of your submission and download the submitted
-    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
-</ul>
+<p>You should submit using GitHub Desktop and then check the website to ensure all the code was pushed.</p>
 </div>
+</template>
+
+<script>
+export default {
+name: 'Pgtbl',
+};
 
 
+</script>
 
-<h2>Optional challenge exercises</h2>
+<style scoped>
+/* Add any relevant CSS here */
+</style>
 
-<ul>
-
-  <li>Implement some ideas from the paper referenced above to make
-    your super-page design more real.
-
-  <li>Unmap the first page of a user process so that dereferencing a
-  null pointer will result in a fault.  You will have to
-  change <tt>user.ld</tt> to start the user text segment at, for
-  example, 4096, instead of 0.
-
-  <li>Add a system call that reports dirty pages (modified pages) using <tt>PTE_D</tt>.
-
-</ul>
-
-</body>
-</html>

@@ -40,6 +40,7 @@ header {
 
   .main-content {
     padding-top: 80px;
+    padding-bottom: 50px;
     /* Adjust this value to match the navbar height */
   }
 

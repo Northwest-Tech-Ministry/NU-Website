@@ -9,6 +9,9 @@ import Tools from './pages/Tools.vue';
 import Xv6 from './pages/Xv6.vue';
 
 import Labutil from './labs/util.vue';
+import LabSyscall from './labs/syscall.vue';
+import LabPgtbl from './labs/pgtbl.vue';
+import LabTraps from './labs/traps.vue';
 
 const routes = [
   { path: '/', name: 'News', component: News },
@@ -23,6 +26,9 @@ const routes = [
 
   // labs
   { path: '/labs/util', name: 'Lab Util', component: Labutil },
+  { path: '/labs/syscall', name: 'Lab Syscall', component: LabSyscall },
+  { path: '/labs/pgtbl', name: 'Lab PgTbl', component: LabPgtbl },
+  { path: '/labs/traps', name: 'Lab Traps', component: LabTraps },
 ];
 
 const router = createRouter({

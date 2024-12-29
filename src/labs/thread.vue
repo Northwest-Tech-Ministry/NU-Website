@@ -15,7 +15,7 @@ use multiple threads to speed up a program, and implement a barrier.
 
 <div class="prereq">
 <p>Before writing code, you should make sure you have read "Chapter 7: Scheduling" from
-  the <a href="../xv6/book-riscv-rev3.pdf">xv6 book</a> and studied
+  the <router-link to="/xv6-book">xv6 Book</router-link> and studied
   the corresponding code.
 </div>
 
